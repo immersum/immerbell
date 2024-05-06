@@ -1,0 +1,31 @@
+[package]
+name = "immerbell"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+keywords = ["no-std", "embedded", "async"]
+
+[dependencies]
+embassy-executor = { version = "0.5.0", features = ["defmt", "arch-cortex-m", "executor-thread", "executor-interrupt", "integrated-timers", "task-arena-size-16384"] }
+embassy-futures = "0.1.1"
+embassy-net = { version = "0.4.0", features = ["defmt", "dhcpv4", "dhcpv4-hostname", "dns", "tcp"] }
+embassy-rp = { version = "0.1.0", features = ["defmt", "critical-section-impl", "time-driver", "unstable-pac"] }
+embassy-time = { version = "0.3.0", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-sync = { version = "0.5.0", features = ["defmt"] }
+cyw43 = { version = "0.1.0", features = ["defmt", "firmware-logs"] }
+cyw43-pio = { version = "0.1.0", features = ["defmt"] }
+
+defmt = "0.3.6"
+defmt-rtt = "0.4.0"
+
+cortex-m = { version = "0.7.7", features = ["inline-asm"] }
+cortex-m-rt = "0.7.4"
+panic-probe = { version = "0.3.1", features = ["print-defmt"] }
+heapless = "0.8.0"
+
+static_cell = "2.0.0"
+portable-atomic = { version = "1.6.0", features = ["critical-section"] }
+rand = { version = "0.8.5", default-features = false }
+
+[profile.release]
+debug = 2
